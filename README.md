@@ -14,8 +14,8 @@ pnpm dev
 bun dev
 ```
 
-For fetching video data from /db/videodb.json: run in terminal:
-```bash json-server --watch /db/videodb.json --port 4000```
+For fetching video data from /db/videodb.json run in terminal:
+```json-server --watch /db/videodb.json --port 4000```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
