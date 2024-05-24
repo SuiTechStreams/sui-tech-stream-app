@@ -9,14 +9,14 @@ type SidebarProps = {
 
 export default function Sidebar({ className }: SidebarProps) {
   return (
-    <aside className={cn("p-2", className)}>
+    <aside className={cn("p-2 mt-20 fixed h-full", className)}>
       {ROUTES.map((route, i) => (
         <NavItem
           key={i}
           href={route.href}
           className="flex justify-start gap-4 items-center"
         >
-          {route.icon && <route.icon size={'1.1rem'} />}
+          {route.icon && <route.icon size={"1.1rem"} />}
           <strong>{route.label}</strong>
         </NavItem>
       ))}
