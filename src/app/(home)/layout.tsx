@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "@/components/global/sidebar";
-import NavBar from "@/components/global/navbar";
+import NavBar from "@/components/global/NavBar";
 
 export default function HomeLayout({
   children,
@@ -11,7 +11,7 @@ export default function HomeLayout({
     <div className="h-full w-full">
       {/* Navbar */}
       <NavBar />
-      <div className="flex h-full mx-auto">
+      <div className="flex h-full w-screen mx-auto">
         {/* Left Sidebar */}
         <Sidebar className="w-[320px] hidden lg:block border border-white" />
 
