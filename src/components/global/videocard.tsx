@@ -10,6 +10,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
+import Link from "next/link";
 
 type Video = {
   video_image: string;
@@ -31,10 +32,6 @@ async function getVideos(): Promise<Video[]> {
 export default async function VideoCard() {
   const videos = await getVideos();
 
-  const handleImageClick = (link: string) => {
-    window.open(link, "_blank");
-  };
-
   return (
     <div className="grid grid-cols-3 gap-2 ">
       {videos.map((video) => (
@@ -43,23 +40,25 @@ export default async function VideoCard() {
           className="flex flex-col justify-between bg-gray-800 m-2"
         >
           <CardHeader className="flex-row items-center">
-            <div>
+            <div className="relative">
               <div className="relative">
-                <a href="#" onClick={() => handleImageClick(video.link)}>
+                <Link href={video.link} target="_blank">
                   <Image
-                    src={`/images/${video.video_image}` || "/images/videoImage.jpg"}
+                    src={
+                      `/images/${video.video_image}` || "/images/videoImage.jpg"
+                    }
                     alt="Notification"
                     width={500}
                     height={400}
                     className="rounded-lg"
                   />
-                </a>
+                </Link>
                 <div className="absolute bottom-0 right-0 bg-black bg-opacity-20 text-white px-2 py-1 rounded">
                   <Badge variant={"secondary"}>{video.time}</Badge>
                 </div>
               </div>
               <div className="mt-4">
-                <CardTitle className="text-lg font-semibold">
+                <CardTitle className="text-md font-semibold">
                   {video.title}
                 </CardTitle>
               </div>
