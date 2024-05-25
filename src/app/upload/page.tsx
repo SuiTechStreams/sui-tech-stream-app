@@ -9,18 +9,18 @@ import { TextArea } from "@/components/ui/textarea";
 export default function UploadPage() {
   return (
     <section className="upload flex flex-col gap-8 max-w-screen-lg mx-auto mt-14 h-full">
-      <h2 className="text-white text-xl">Upload New Video</h2>
+      <h2 className="text-white text-3xl">Upload New Video</h2>
       <div className="flex flex-row gap-8">
-        <form className="flex flex-col gap-5 bg-gray-800 p-6 rounded-md">
+        <form className="flex flex-col gap-5 bg-customPurple-foreground p-6 rounded-md">
           <label className="w-full flex flex-col gap-2">
             <p className="text-white">Enter title</p>
-            <Input name="title" className="text-gray-800" />
+            <Input name="title" className="text-gray-800 bg-zinc-100" />
           </label>
           <label className="flex flex-col gap-2 w-full">
             <p className="text-white">Description</p>
             <TextArea
               name="description"
-              className="resize-none rounded-md p-2 text-gray-800"
+              className="resize-none rounded-md p-2 text-gray-800 bg-zinc-100"
               rows={7}
             />
           </label>
@@ -29,7 +29,7 @@ export default function UploadPage() {
             <select
               name="category"
               id="category"
-              className="rounded-md p-2 text-gray-800"
+              className="rounded-md p-2 text-gray-800 bg-zinc-100"
             >
               <option value="categ1">Category1</option>
             </select>
@@ -37,7 +37,7 @@ export default function UploadPage() {
           <div className="tags-check flex items-center gap-5">
             <label className="flex items-center gap-2 flex-1">
               <p className="text-white">Tags</p>
-              <Input name="tags" className="text-gray-800" />
+              <Input name="tags" className="text-gray-800 bg-zinc-100" />
             </label>
             <label className="flex flex-row-reverse items-center gap-2">
               <p className="text-white">Subscribers only </p>
@@ -53,15 +53,15 @@ export default function UploadPage() {
           </button>
         </form>
         <div className="flex flex-col gap-8 flex-1">
-          <div className="video flex-1 bg-gray-800 rounded-md flex items-center justify-center">
-            <p className="bg-gray-700 px-3 py-2 text-white border border-white rounded-md">
+          <div className="video flex-1 bg-customPurple-foreground rounded-md flex items-center justify-center">
+            <button className="bg-customPurple px-3 py-2 text-white border border-white rounded-md">
               Click to upload new video
-            </p>
+            </button>
           </div>
-          <div className="thumbnail flex-1 bg-gray-800 rounded-md flex items-center justify-center">
-            <p className="bg-gray-700 px-3 py-2 text-white border border-white rounded-md">
+          <div className="thumbnail flex-1 bg-customPurple-foreground rounded-md flex items-center justify-center">
+            <button className="bg-customPurple px-3 py-2 text-white border border-white rounded-md">
               Click to upload ne thumbnail
-            </p>
+            </button>
           </div>
         </div>
       </div>
