@@ -37,7 +37,7 @@ export default async function VideoCard() {
       {videos.map((video) => (
         <Card
           key={video.id}
-          className="flex flex-col justify-between bg-gray-800 m-2"
+          className="flex flex-col justify-between bg-customPurple-foreground m-2"
         >
           <CardHeader className="flex-row items-center">
             <div className="relative">
