@@ -20,7 +20,7 @@ export const UploadToStorage = ({ updateLink, className }: IUploadFile) => {
     <label htmlFor="myfile">
       <div className={className}>
         <Image
-          src="/images/upload.png"
+          src="/images/upload.webp"
           alt="upload Logo"
           height="150"
           width="300"

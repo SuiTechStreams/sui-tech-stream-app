@@ -56,7 +56,7 @@ export default function VideoCard() {
           <CardHeader className="flex-row items-center">
             <div className="relative">
               <div className="relative">
-                <Link href={video.link} target="_blank">
+                <Link href={`/videoStream?videoId=${video.link.split('v=')[1]}`} target="_blank">
                   <Image
                     src={
                       `/images/${video.video_image}` || "/images/videoImage.jpg"

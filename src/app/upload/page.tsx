@@ -44,6 +44,7 @@ export default function UploadPage() {
               <input
                 type="checkbox"
                 checked
+                onChange={() => {}}
                 className="rounded-md p-2 text-gray-800"
               />
             </label>
