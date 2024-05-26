@@ -1,4 +1,3 @@
-"use client";
 import {
   Card,
   CardContent,
@@ -11,22 +10,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import Link from "next/link";
+import { Video } from "@/types";
 
-type Video = {
-  video_image: string;
-  title: string;
-  time: string;
-  id: string;
-  uploaded_time: string;
-  views: string;
-  channel_name: string;
-  channel_img: string;
-  link: string;
-};
 
 async function getVideos(): Promise<Video[]> {
-  const result = await fetch("http://localhost:4000/videos");
-  return result.json();
+  // const result = await fetch("http://localhost:4000/videos");
+  return []
 }
 
 export default async function VideoCard() {

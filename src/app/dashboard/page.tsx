@@ -52,7 +52,7 @@ export default function Dashboard() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="stream details">
-            <StreamDetails/>
+          <StreamDetails />
         </TabsContent>
         <TabsContent value="sessions">
           {activeTab === "sessions" && tabContent}

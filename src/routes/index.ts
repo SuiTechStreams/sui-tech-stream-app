@@ -1,6 +1,7 @@
 import { Home, LucideIcon } from "lucide-react";
 import { IconType } from "react-icons";
 import { MdDashboard, MdUpload } from "react-icons/md";
+import { GrChannel } from "react-icons/gr";
 
 export type ROUTES = {
   label: string;
@@ -18,6 +19,11 @@ export const ROUTES: ROUTES[] = [
     label: "Dashboard",
     href: "/dashboard",
     icon: MdDashboard,
+  },
+  {
+    label: "My Channel",
+    href: "/my-channel",
+    icon: GrChannel ,
   },
   {
     label: "Upload",

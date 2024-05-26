@@ -21,20 +21,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider>
-          <div className="h-full">
-            {/* Navbar */}
-            <NavBar />
-            <div className="flex max-w-full bg-black">
-              {/* Left Sidebar */}
-              <Sidebar className="fixed bg-customPurple-foreground py-3 h-full border-r w-60 border-gray-600" />
+          {/* Navbar */}
+          <NavBar />
+          <div className="flex h-full pt-20 max-w-screen-xl mx-auto">
+            {/* Left Sidebar */}
+            <Sidebar className="w-72 bg-customPurple-foreground hidden lg:block border-r border-gray-600 p-2 overflow-y-auto" />
 
-              {/* Main Body */}
-              <main className="p-4 pl-64 flex-1 max-w-screen-2xl h-full mx-auto bg-customPurple mt-16">
-                {children}
-              </main>
-            </div>
+            {/* Main Body */}
+            <main className="bg-customPurple w-full h-full overflow-y-auto">{children}</main>
           </div>
-
         </ThemeProvider>
       </body>
     </html>
