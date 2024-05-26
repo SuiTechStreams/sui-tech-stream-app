@@ -1,6 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import TabBar from "@/components/global/tabbar";
-import Image from "next/image";
 import { Input } from '@/components/ui/input';
 import { TextArea } from "@/components/ui/textarea";
 

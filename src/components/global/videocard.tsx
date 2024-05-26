@@ -38,7 +38,6 @@ export default function VideoCard() {
     const fetchAllVideos = React.useCallback(async () => {
       const response = await getVideos();
       setVideo(response);
-      return response;
     }, []);
 
 

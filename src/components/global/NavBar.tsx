@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import ToggleTheme from "./toggle-theme";
 import { Search, Menu, X } from "lucide-react";
 import Image from "next/image";
@@ -32,7 +32,7 @@ export default function NavBar() {
   const authService = new AuthService();
 
   let walletAddress;
-  const suiService = new SuiService();
+  const suiService = useMemo(() => new SuiService(), []);
 
   const getBalance = useCallback(async () => {
     try {
@@ -45,7 +45,7 @@ export default function NavBar() {
       console.log({ error });
     } finally {
     }
-  }, []);
+  }, [suiService]);
 
   const logout = async () => {
     sessionStorage.clear();
