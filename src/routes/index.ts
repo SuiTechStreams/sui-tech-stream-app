@@ -1,6 +1,6 @@
 import { Home, LucideIcon } from "lucide-react";
 import { IconType } from "react-icons";
-import { MdDashboard, MdUpload } from "react-icons/md";
+import { MdDashboard, MdUpload, MdCurrencyExchange } from "react-icons/md";
 
 export type ROUTES = {
   label: string;
@@ -23,5 +23,10 @@ export const ROUTES: ROUTES[] = [
     label: "Upload",
     href: "/upload",
     icon: MdUpload,
+  },
+  {
+    label: "Wormhole Bridge",
+    href: "/bridge",
+    icon: MdCurrencyExchange,
   },
 ];

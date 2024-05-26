@@ -1,7 +1,7 @@
-import { SuiClient, SuiHTTPTransport } from '@mysten/sui.js/client';
+import { SuiClient } from '@mysten/sui.js/client';
 
 // node rpc url
-const FULLNODE_URL: string = process.env.NEXT_PUBLIC_FULLNODE_URL || '';
+const FULLNODE_URL: string = process.env.NEXT_PUBLIC_FULLNODE_TESTNET_URL || '';
 // the id of the package of a deployed contract
 export const PACKAGE_ID = process.env.NEXT_PUBLIC_PACKAGE_ID;
 

@@ -11,6 +11,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
+import React from "react";
 
 type Video = {
   video_image: string;
@@ -29,12 +31,24 @@ async function getVideos(): Promise<Video[]> {
   return result.json();
 }
 
-export default async function VideoCard() {
-  const videos = await getVideos();
+
+export default function VideoCard() {
+    const [videos, setVideo] = React.useState<any>();
+
+    const fetchAllVideos = React.useCallback(async () => {
+      const response = await getVideos();
+      setVideo(response);
+      return response;
+    }, []);
+
+
+  useEffect(() => {
+    fetchAllVideos();
+  });
 
   return (
     <div className="grid grid-cols-3 gap-2 ">
-      {videos.map((video) => (
+      {videos && videos.map((video: any) => (
         <Card
           key={video.id}
           className="flex flex-col justify-between bg-customPurple-foreground m-2"

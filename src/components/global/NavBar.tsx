@@ -110,6 +110,7 @@ export default function NavBar() {
                 height={20}
               />
             </Button>
+            <w3m-button />
             {AuthService.isAuthenticated() ? (
               <Wallet
                 address={walletAddress || ""}
