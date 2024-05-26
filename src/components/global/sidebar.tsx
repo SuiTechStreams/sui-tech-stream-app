@@ -9,7 +9,7 @@ type SidebarProps = {
 
 export default function Sidebar({ className }: SidebarProps) {
   return (
-    <aside className={cn("p-2 mt-20 fixed h-full", className)}>
+    <aside className={cn("h-full", className)}>
       {ROUTES.map((route, i) => (
         <NavItem
           key={i}

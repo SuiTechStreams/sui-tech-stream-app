@@ -1,14 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import TabBar from "@/components/global/tabbar";
 import Image from "next/image";
-import { Input } from '@/components/ui/input';
+import { Input } from "@/components/ui/input";
 import { TextArea } from "@/components/ui/textarea";
 
 // eslint-disable-next-line @next/next/no-img-element
 
 export default function UploadPage() {
   return (
-    <section className="upload flex flex-col gap-8 max-w-screen-lg mx-auto mt-14 h-full">
+    <section className="upload flex flex-col gap-8 max-w-screen-lg mx-auto h-full p-4">
       <h2 className="text-white text-3xl">Upload New Video</h2>
       <div className="flex flex-row gap-8">
         <form className="flex flex-col gap-5 bg-customPurple-foreground p-6 rounded-md">

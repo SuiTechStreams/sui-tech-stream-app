@@ -15,10 +15,10 @@ export default function SidebarMobile({
   return (
     <Sheet>
       <SheetTrigger asChild className={cn(className)}>
-        <Menu role="button" color="white" />
+        <Menu role="button" color="white" className="h-8 w-8" />
       </SheetTrigger>
-      <SheetContent side={side}>
-        <Sidebar />
+      <SheetContent side={side} className="bg-customPurple-foreground">
+        <Sidebar className="mt-6" />
       </SheetContent>
     </Sheet>
   );
