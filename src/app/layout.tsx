@@ -76,7 +76,7 @@ export default function RootLayout({
             <ThemeProvider>
               {/* Navbar */}
               <NavBar />
-              <div className="flex h-full pt-20 max-w-screen-xl mx-auto">
+              <div className="w-full flex h-full pt-20">
                 {/* Left Sidebar */}
                 <Sidebar className="w-72 bg-customPurple-foreground hidden lg:block border-r border-gray-600 p-2 overflow-y-auto" />
 
