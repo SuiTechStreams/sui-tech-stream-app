@@ -1,4 +1,3 @@
-"use client";
 import {
   Card,
   CardContent,
@@ -11,24 +10,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import { Video } from "@/types";
 import React from "react";
 
-type Video = {
-  video_image: string;
-  title: string;
-  time: string;
-  id: string;
-  uploaded_time: string;
-  views: string;
-  channel_name: string;
-  channel_img: string;
-  link: string;
-};
 
 async function getVideos(): Promise<Video[]> {
   const result = await fetch("http://localhost:4000/videos");
-  return result.json();
+  return result.json()
 }
 
 
@@ -41,7 +29,7 @@ export default function VideoCard() {
     }, []);
 
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetchAllVideos();
   });
 

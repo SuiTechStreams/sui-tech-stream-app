@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState, useMemo } from "react";
 import ToggleTheme from "./toggle-theme";
 import { Search, Menu, X } from "lucide-react";
 import Image from "next/image";
@@ -63,7 +63,12 @@ export default function NavBar() {
   return (
     <nav className="flex flex-col md:flex-row bg-customPurple-foreground w-full border-b md:border-0 items-center justify-between p-0 fixed z-10">
       <div className="flex p-2 items-center">
-        <Image src="/images/sui_tech_stream.svg" alt="User" width={70} height={70} />
+        <Image
+          src="/images/sui_tech_stream.svg"
+          alt="User"
+          width={70}
+          height={70}
+        />
         <h1 className="font-display font-bold text-2xl text-center p-4">
           Name
         </h1>
