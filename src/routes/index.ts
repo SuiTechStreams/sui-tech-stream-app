@@ -3,6 +3,7 @@ import { IconType } from "react-icons";
 import { MdDashboard, MdUpload } from "react-icons/md";
 import { GrChannel } from "react-icons/gr";
 
+
 export type ROUTES = {
   label: string;
   href: string;
@@ -29,5 +30,10 @@ export const ROUTES: ROUTES[] = [
     label: "Upload",
     href: "/upload",
     icon: MdUpload,
+  },
+  {
+    label: "Wormhole Bridge",
+    href: "/bridge",
+    icon: MdCurrencyExchange,
   },
 ];

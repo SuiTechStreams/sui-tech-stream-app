@@ -14,16 +14,28 @@ import { Video } from "@/types";
 
 
 async function getVideos(): Promise<Video[]> {
-  // const result = await fetch("http://localhost:4000/videos");
-  return []
+  const result = await fetch("http://localhost:4000/videos");
+  return result.json()
 }
 
-export default async function VideoCard() {
-  const videos = await getVideos();
+
+export default function VideoCard() {
+    const [videos, setVideo] = React.useState<any>();
+
+    const fetchAllVideos = React.useCallback(async () => {
+      const response = await getVideos();
+      setVideo(response);
+      return response;
+    }, []);
+
+
+  useEffect(() => {
+    fetchAllVideos();
+  });
 
   return (
     <div className="grid grid-cols-3 gap-2 ">
-      {videos.map((video) => (
+      {videos && videos.map((video: any) => (
         <Card
           key={video.id}
           className="flex flex-col justify-between bg-customPurple-foreground m-2"
@@ -31,7 +43,7 @@ export default async function VideoCard() {
           <CardHeader className="flex-row items-center">
             <div className="relative">
               <div className="relative">
-                <Link href={video.link} target="_blank">
+                <Link href={`/videoStream?videoId=${video.link.split('v=')[1]}`} target="_blank">
                   <Image
                     src={
                       `/images/${video.video_image}` || "/images/videoImage.jpg"

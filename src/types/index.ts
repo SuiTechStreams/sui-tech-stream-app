@@ -1,5 +1,7 @@
 // Types goes here// Types goes here
 
+import { SiweMessage } from "siwe";
+
 export type IWallet = {
   address: string;
   amount: string;
@@ -22,3 +24,15 @@ export type Video = {
   channel_img: string;
   link: string;
 };
+
+export interface WagmaMetaData {
+    name: string;
+    description: string;
+    url: string;
+    icons: string[];
+}
+
+export interface Imessage {
+  message: SiweMessage;
+  signature: `0x${string}`;
+}

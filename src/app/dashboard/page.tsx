@@ -19,24 +19,24 @@ export default function Dashboard() {
     <div className="w-full p-5">
       <h1 className="p-5 font-bold text-3xl">Dashboard</h1>
       <Tabs value={activeTab}>
-        <TabsList className="flex space-x-4 px-4 py-6 bg-violet-700 rounded-2xl">
+        <TabsList className="flex space-x-4 px-4 py-6 bg-customPurple-foreground rounded-2xl">
           <TabsTrigger
             value="stream details"
-            className="py-2 px-6 text-md border-b-2 border-transparent hover:border-gray-500 focus:outline-none focus-visible:border-blue-500 text-white"
+            className="py-2 px-6 text-md border-b-2 border-transparent bg-black hover:border-gray-500 focus:outline-none focus-visible:border-blue-500 text-white"
             onClick={() => handleTabClick("Stream details", "stream details")}
           >
             Stream details
           </TabsTrigger>
           <TabsTrigger
             value="sessions"
-            className="py-2 px-6 text-md border-b-2 border-transparent hover:border-gray-500 focus:outline-none focus-visible:border-blue-500 text-white"
+            className="py-2 px-6 text-md border-b-2 border-transparent bg-black hover:border-gray-500 focus:outline-none focus-visible:border-blue-500 text-white"
             onClick={() => handleTabClick("Sessions", "sessions")}
           >
             Sessions
           </TabsTrigger>
           <TabsTrigger
             value="published videos"
-            className="py-2 px-6 text-md border-b-2 border-transparent hover:border-gray-500 focus:outline-none focus-visible:border-blue-500 text-white"
+            className="py-2 px-6 text-md border-b-2 border-transparent bg-black hover:border-gray-500 focus:outline-none focus-visible:border-blue-500 text-white"
             onClick={() =>
               handleTabClick("Published videos", "published videos")
             }
@@ -45,7 +45,7 @@ export default function Dashboard() {
           </TabsTrigger>
           <TabsTrigger
             value="subscription"
-            className="py-2 px-6 text-md border-b-2 border-transparent hover:border-gray-500 focus:outline-none focus-visible:border-blue-500 text-white"
+            className="py-2 px-6 text-md border-b-2 border-transparent bg-black hover:border-gray-500 focus:outline-none focus-visible:border-blue-500 text-white"
             onClick={() => handleTabClick("Subscription", "subscription")}
           >
             Subscription
