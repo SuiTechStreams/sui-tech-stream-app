@@ -52,11 +52,11 @@ interface ISetPfp{
 }
 
 
-export class NotesService {
+export class ChainTubeService {
 
     async create_profile({Arg0, Arg1, Arg2, Arg3}: CreateProfile) {
         const txb = new TransactionBlock();
-        const txData = {
+        const txData = {// notes is name of contract, replace it
             target: `${PACKAGE_ID}::notes::create_profile`,
             arguments: [
                 txb.pure.string(Arg0),
@@ -70,7 +70,7 @@ export class NotesService {
 
     async tip({Arg0, Arg1}: ITips) {
         const txb = new TransactionBlock();
-        const txData = {
+        const txData = {// notes is name of contract, replace it
             target: `${PACKAGE_ID}::notes::tip`,
             arguments: [
                 txb.pure.string(Arg0),
@@ -82,7 +82,7 @@ export class NotesService {
 
     async isFollowing({Arg0, Arg1}: IisFollowing) {
         const txb = new TransactionBlock();
-        const txData = {
+        const txData = {// notes is name of contract, replace it
             target: `${PACKAGE_ID}::notes::isFollowing`,
             arguments: [
                 txb.pure.string(Arg0),
