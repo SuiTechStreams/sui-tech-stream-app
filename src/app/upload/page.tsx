@@ -1,3 +1,4 @@
+"use client";
 /* eslint-disable @next/next/no-img-element */
 import TabBar from "@/components/global/tabbar";
 import Image from "next/image";

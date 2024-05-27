@@ -1,5 +1,8 @@
 import Image from "next/image";
 import { ChangeEvent } from "react";
+import { IpfsUploadBatchOptions, ThirdwebStorage } from "@thirdweb-dev/storage";
+import { useStorageUpload } from "@thirdweb-dev/react";
+
 
 
 interface IUploadFile {
@@ -9,12 +12,12 @@ interface IUploadFile {
 
 
 export const UploadToStorage = ({ updateLink, className }: IUploadFile) => {
-  //const { mutateAsync: upload } = useStorageUpload();
+  const { mutateAsync: upload } = useStorageUpload();
 
   const uploadFile = async (event: ChangeEvent<HTMLInputElement | null>) => {
-    //let file = event.currentTarget.files && event.currentTarget.files[0];
-    //const uris = await upload({ data: [file] });
-    //updateLink(uris[0]);
+    let file = event.currentTarget.files && event.currentTarget.files[0];
+    const uris = await upload({ data: [file] });
+    updateLink(uris[0]);
   };
   return (
     <label htmlFor="myfile">

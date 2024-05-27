@@ -70,7 +70,7 @@ export default function NavBar() {
           height={70}
         />
         <h1 className="font-display font-bold text-2xl text-center p-4">
-          Name
+          ChainTube
         </h1>
       </div>
 

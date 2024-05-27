@@ -9,6 +9,7 @@ import Sidebar from "@/components/global/sidebar";
 import { createWeb3Modal } from "@web3modal/wagmi/react";
 import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ThirdwebProvider } from "@thirdweb-dev/react";
 
 import { WagmiProvider } from "wagmi";
 
@@ -31,6 +32,8 @@ const inter = Inter({ subsets: ["latin"] });
 // 1. Get projectID at https://cloud.walletconnect.com
 
 const projectId = process.env.NEXT_PUBLIC_PROJECT_ID || "";
+const clientId = process.env.NEXT_PUBLIC_THIRDWEB_ClIENT_ID || "";
+
 
 const metadata: Metadata = {
   title: "ChainTube",
@@ -71,6 +74,11 @@ export default function RootLayout({
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
+                  <ThirdwebProvider
+            clientId={clientId} // You can get a client id from dashboard settings
+            activeChain="sepolia"
+          >
+
         <html lang="en">
           <body className={inter.className}>
             <ThemeProvider>
@@ -85,7 +93,8 @@ export default function RootLayout({
               </div>
             </ThemeProvider>
           </body>
-        </html>
+          </html>
+          
       </QueryClientProvider>
     </WagmiProvider>
   );
