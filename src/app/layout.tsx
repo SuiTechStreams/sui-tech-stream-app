@@ -77,7 +77,7 @@ export default function RootLayout({
                   <ThirdwebProvider
             clientId={clientId} // You can get a client id from dashboard settings
             activeChain="sepolia"
-          >
+          />
 
         <html lang="en">
           <body className={inter.className}>
