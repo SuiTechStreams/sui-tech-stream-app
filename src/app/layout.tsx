@@ -94,7 +94,7 @@ export default function RootLayout({
             </ThemeProvider>
           </body>
           </html>
-          
+          </ThirdwebProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );
