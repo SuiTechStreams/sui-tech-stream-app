@@ -6,15 +6,15 @@ type SidebarProps = {
 };
 
 const channels = [
-  { name: "Channel one", image: "/images/channel_1.jpg" },
-  { name: "Channel two", image: "/images/channel_2.jpg" },
-  { name: "Channel three", image: "/images/channel_3.jpg" },
+  { name: "Sui Network", image: "/images/channel_5.jpg" },
+  { name: "PC Crypto", image: "/images/channel_1.jpg" },
+  { name: "DappRadar", image: "/images/channel_7.jpg" },
 ];
 
 const uploads = [
-  { id: 1, video_image: "/images/video_1.jpg", title: "Move Smart Contract Language Tutorial for Aptos & Sui", uploaded_time: "1 year ago" },
-  { id: 2, video_image: "/images/video_2.jpg", title: "Let’s get MOVING | Sui Blockchain", uploaded_time: "1 year ago" },
-  { id: 3, video_image: "/images/video_3.jpg", title: "Fast and Reliable Smart Contracts on Sui with Move - Converge22", uploaded_time: "1 year ago" },
+  { id: 1, video_image: "/images/videoImage.jpg", title: "Introduction to Move Language", uploaded_time: "1 year ago" },
+  { id: 2, video_image: "/images/analyzer.png", title: "Introduction to Sui-Move analyzer: Development Made Simple", uploaded_time: "1 year ago" },
+  { id: 3, video_image: "/images/suiObjects.png", title: "Intro to Sui Objects | Move on Sui Course 2.1", uploaded_time: "1 year ago" },
 ];
 
 export default function RightSideBar({ className }: SidebarProps) {
@@ -29,7 +29,7 @@ export default function RightSideBar({ className }: SidebarProps) {
               className="channel flex items-center gap-4 justify-between"
             >
               <div className="flex items-center gap-4">
-                <div className="channel-img w-8 h-8 rounded-full bg-customPurple overflow-hidden">
+                <div className="channel-img w-10 h-10 rounded-full bg-customPurple overflow-hidden">
                   <Image
                     src={channel.image}
                     alt={channel.name}
@@ -39,7 +39,7 @@ export default function RightSideBar({ className }: SidebarProps) {
                 </div>
                 <p className="text-white">{channel.name}</p>
               </div>
-              <button className="w-5 h-5 bg-white rounded flex items-center justify-center font-semibold">
+              <button className="w-7 h-7 bg-white rounded flex items-center justify-center font-semibold">
                 +
               </button>
             </div>
