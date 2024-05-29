@@ -64,21 +64,21 @@ interface ICreateVideo {
 }
 
 interface ILike {
-    videoId: string;
+    videoStatsId: string;
     profileCapId: string;
 }
 interface IUnlike {
-    videoId: string;
+    videoStatsId: string;
     profileCapId: string;
 }
 interface IComment {
-    videoId: string;
+    videoStatsId: string;
     profileCapId: string;
     text: string;
 }
 
 interface IDeleteComment {
-    videoId: string;
+    videoStatsId: string;
     profileCapId: string;
     commentId: string;
 }
@@ -218,12 +218,12 @@ export class ChainTubeService {
         return this.makeMoveCall(txData, txb);
     }
 
-    async like({videoId, profileCapId}: ILike) {
+    async like({videoStatsId, profileCapId}: ILike) {
         const txb = new TransactionBlock();
         const txData = {
             target: `${PACKAGE_ID}::video::like`,
             arguments: [
-                txb.object(videoId),
+                txb.object(videoStatsId),
                 txb.object(profileCapId),
                 txb.object(SUI_CLOCK_OBJECT_ID),
             ]
@@ -231,24 +231,24 @@ export class ChainTubeService {
         return this.makeMoveCall(txData, txb);
     }
 
-    async unlike({videoId, profileCapId}: IUnlike) {
+    async unlike({videoStatsId, profileCapId}: IUnlike) {
         const txb = new TransactionBlock();
         const txData = {
             target: `${PACKAGE_ID}::video::unlike`,
             arguments: [
-                txb.object(videoId),
+                txb.object(videoStatsId),
                 txb.object(profileCapId),
             ]
         };
         return this.makeMoveCall(txData, txb);
     }
 
-    async comment({videoId, profileCapId, text}: IComment) {
+    async comment({videoStatsId, profileCapId, text}: IComment) {
         const txb = new TransactionBlock();
         const txData = {
             target: `${PACKAGE_ID}::video::comment`,
             arguments: [
-                txb.object(videoId),
+                txb.object(videoStatsId),
                 txb.object(profileCapId),
                 txb.pure.string(text),
                 txb.object(SUI_CLOCK_OBJECT_ID),
@@ -256,10 +256,6 @@ export class ChainTubeService {
         };
         return this.makeMoveCall(txData, txb);
     }
-
-
-
-
 
     async getVideos() {
         const sender = AuthService.walletAddress();
@@ -289,14 +285,14 @@ export class ChainTubeService {
         await this.makeMoveCall(txData, txb);
     }
 
-    async delete_comment({ videoId, profileCapId, commentId }: IDeleteComment) {
+    async delete_comment({ videoStatsId, profileCapId, commentId }: IDeleteComment) {
         const sender = AuthService.walletAddress();
         const txb = new TransactionBlock();
         txb.setSender(sender);
         const txData = {
             target: `${PACKAGE_ID}::video::delete_comment`,
             arguments: [
-                txb.object(videoId),
+                txb.object(videoStatsId),
                 txb.object(profileCapId),
                 txb.object(commentId),
             ]
