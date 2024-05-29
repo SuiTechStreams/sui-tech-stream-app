@@ -15,7 +15,7 @@ import evm from "@wormhole-foundation/sdk/evm";
 import sui from "@wormhole-foundation/sdk/sui";
 import { SignerStuff, getSigner, waitLog } from "@/lib/helpers";
 
-(async function () {
+(async function (EthSignature, creatorsAddress) {
   // Init Wormhole object, passing config for which network
   // to use (e.g. Mainnet/Testnet) and what Platforms to support
   const wh = await wormhole("Testnet", [evm, sui]);

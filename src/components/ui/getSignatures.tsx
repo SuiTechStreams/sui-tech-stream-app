@@ -2,6 +2,8 @@ import * as React from 'react'
 import { useAccount, useSignMessage, useChainId } from 'wagmi'
 import { SiweMessage, generateNonce } from "siwe";
 import { Imessage } from '@/types';
+import { ChainTubeService } from "@/hooks/chainTubeCall";
+
 
 function SignInButton({
   setMessage,
@@ -23,6 +25,8 @@ function SignInButton({
       setState((x) => ({ ...x, error: error as Error }));
     }
   }, []);
+
+  const chainTubeService = new ChainTubeService();
 
   React.useEffect(() => {
     fetchNonce();
@@ -57,7 +61,15 @@ function SignInButton({
       });
 
       setState((x) => ({ ...x, loading: false }));
-      setMessage({ message, signature });
+
+      const suiSignature = chainTubeService.getSuiMessageCall();
+
+      //setMessage({ message, signature });
+      console.log(
+        "Ethereum signature ==================================",
+        signature
+      );
+
     } catch (error) {
       setState((x) => ({ ...x, loading: false, nonce: undefined }));
       onError({ error });

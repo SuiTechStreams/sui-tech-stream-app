@@ -74,7 +74,7 @@ export default function RootLayout({
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
-                  <ThirdwebProvider
+          <ThirdwebProvider
             clientId={clientId} // You can get a client id from dashboard settings
             activeChain="sepolia"
           >
@@ -94,7 +94,7 @@ export default function RootLayout({
             </ThemeProvider>
           </body>
           </html>
-          
+          </ThirdwebProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );
