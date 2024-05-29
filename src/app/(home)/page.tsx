@@ -8,6 +8,7 @@ import AllVideo from "./All";
 import Game from "./Gaming";
 import Music from "./Music";
 import Technology from "./Technology";
+import RightSideBar from "@/components/global/rightSidebar";
 
 export default function HomePage() {
 
@@ -74,8 +75,8 @@ export default function HomePage() {
         </div>
       </section>
       {/* Right content */}
-      <section className="col-span-12 md:col-span-3 border-gray-600">
-        Right Section
+      <section className="col-span-12 md:col-span-3 border-gray-600 flex flex-col gap-5 bg-customPurple-foreground p-6">
+        <RightSideBar className="flex flex-col gap-6" />
       </section>
     </div>
   );
