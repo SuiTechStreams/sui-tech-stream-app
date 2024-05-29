@@ -38,7 +38,7 @@ export default function VideoCard() {
       {videos && videos.map((video: any) => (
         <Card
           key={video.id}
-          className="flex flex-col justify-between bg-customPurple-foreground m-2"
+          className="flex flex-col justify-between bg-customLightPurple-dark_foreground dark:bg-customPurple-foreground m-2"
         >
           <CardHeader className="flex-row items-center">
             <div className="relative">
@@ -59,7 +59,7 @@ export default function VideoCard() {
                 </div>
               </div>
               <div className="mt-4">
-                <CardTitle className="text-md font-semibold">
+                <CardTitle className=" text-white dark:text-customLightPurple-dark_text text-md font-semibold">
                   {video.title}
                 </CardTitle>
               </div>
@@ -73,13 +73,13 @@ export default function VideoCard() {
                 />
                 <AvatarFallback>img</AvatarFallback>
               </Avatar>
-              <span className="text-gray-600 text-base">
+              <span className="text-pink-200 dark:text-gray-600 text-base">
                 {video.channel_name}
               </span>
             </div>
           </CardContent>
-          <CardFooter className="flex">
-            <CardDescription className="tx-sm">
+          <CardFooter className="flex text-gray-100 dark:dark:text-gray-500">
+            <CardDescription className="tx-sm text-gray-300 dark:dark:text-gray-500">
               {video.views} views . {video.uploaded_time}
             </CardDescription>
           </CardFooter>

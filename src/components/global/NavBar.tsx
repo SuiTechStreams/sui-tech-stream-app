@@ -61,7 +61,7 @@ export default function NavBar() {
   }, [getBalance]);
 
   return (
-    <nav className="flex flex-col md:flex-row bg-customPurple-foreground w-full border-b md:border-0 items-center justify-between p-0 fixed z-10">
+    <nav className="flex flex-col md:flex-row bg-customLightPurple dark:bg-customPurple-foreground w-full border-b md:border-0 items-center justify-between p-0 fixed z-10">
       <div className="flex p-2 items-center">
         <Image
           src="/images/sui_tech_stream.svg"
@@ -76,10 +76,10 @@ export default function NavBar() {
 
       <div className="flex justify-between w-5/6">
         <div className="flex items-center w-full md:w-auto">
-          <form className="flex p-1 bg-customPurple items-center space-x-2 border rounded-md ml-2 md:ml-10">
-            <Search className="h-5 w-5 flex-none text-gray-300 ml-2 md:ml-4" />
+          <form className="flex p-1 bg-customLightPurple-dark_foreground dark:bg-customPurple items-center space-x-2 border rounded-md ml-2 md:ml-10">
+            <Search className="h-5 w-5 flex-none text-white ml-2 md:ml-4" />
             <input
-              className="w-full outline-none appearance-none bg-customPurple text-gray-500 p-2 sm-auto"
+              className="w-full outline-none bg-customLightPurple-dark_foreground dark:bg-customPurple text-white placeholder-custom-white p-2 sm-auto"
               type="search"
               placeholder="Search"
             />
@@ -106,7 +106,7 @@ export default function NavBar() {
             <ToggleTheme />
             <Button
               size={"icon"}
-              className="bg-black w-10 h-10 p-3 border border-gray-100 hover:bg-zinc-700 md:mt-0"
+              className="bg-customLightPurple-dark_foreground dark:bg-black w-10 h-10 p-3 border border-gray-100 hover:bg-zinc-700 md:mt-0"
             >
               <Image
                 src="/images/notification.svg"
@@ -126,7 +126,7 @@ export default function NavBar() {
             ) : (
               <Button
                 onClick={() => authService.login()}
-                className="rounded-pill px-2 mt-0"
+                className="rounded-pill px-2 mt-0 bg-customLightPurple-dark_foreground dark:bg-black dark:text-white border border-gray-300 "
               >
                 Login with Google
               </Button>
