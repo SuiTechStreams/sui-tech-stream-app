@@ -1,4 +1,4 @@
-import { Home, LucideIcon } from "lucide-react";
+import { Home, LucideIcon, Settings } from "lucide-react";
 import { IconType } from "react-icons";
 import { MdDashboard, MdUpload, MdCurrencyExchange } from "react-icons/md";
 import { GrChannel } from "react-icons/gr";
@@ -15,6 +15,11 @@ export const ROUTES: ROUTES[] = [
     label: "Home",
     href: "/",
     icon: Home,
+  },
+  {
+    label: "Settings",
+    href: "/settings",
+    icon: Settings,
   },
   {
     label: "Dashboard",
