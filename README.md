@@ -46,5 +46,7 @@ ChainTube is the first decentralized social media platform that is a combination
 - **MOVE Programming Language**: Used for developing smart contracts.
 - **TypeScript** and **JavaScript**: For frontend development.
 
+For Contracts Visit: https://github.com/SuiTechStreams/SuiContarcts
+
 ## Impact and Future Vision:
 ChainTube aims to revolutionize the video streaming industry by empowering content creators with true ownership and control over their content. It fosters a decentralized ecosystem that is secure, transparent, and user-friendly, drawing in a vibrant community of users, creators, and developers. By continuously integrating innovative technologies and enhancing user experience, ChainTube strives to be at the forefront of the decentralized social media revolution on the SUI Blockchain.
