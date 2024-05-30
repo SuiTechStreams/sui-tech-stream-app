@@ -66,11 +66,11 @@ export async function executeWormhole (EthSignature, creatorsAddress?: any) {
   // Signer interface (e.g. wrapper around web wallet) should work
   //const source = await getSigner(sendChain);
   //const destination = await getSigner(rcvChain);
-  const source:SignerStuff<Network, Chain> = {
-    "Ethereum",
-    signer: EthSignature as Signer<Network, Chain>,
-    address: Wormhole.chainAddress("Sepolia", EthSignature.address()),
-  };
+  // const source:SignerStuff<Network, Chain> = {
+  //   "Ethereum",
+  //   signer: EthSignature as Signer<Network, Chain>,
+  //   address: Wormhole.chainAddress("Sepolia", EthSignature.address()),
+  // };
   
   const TEST_MNEMONICS = 'change online weapon toe giggle own song inject pretty then seven yard';
 
@@ -88,11 +88,11 @@ const { bytes, signature: userSignature } = await txb.sign({
   console.log("userSignature =================================================", userSignature);
 
 
-const destination: SignerStuff<Network, Chain> = {
-    chain: {"Sapolia", 1115511},
-    signer: userSignature as Signer<Network, Chain>,
-    address: Wormhole.chainAddress("Sui", "0xe341a5e1b92cc949ba25be5412ba4f99f8702f30e424d6e6298a33c1d013327a"),
-  };;
+// const destination: SignerStuff<Network, Chain> = {
+//     chain: {"Sapolia", 1115511},
+//     signer: userSignature as Signer<Network, Chain>,
+//     address: Wormhole.chainAddress("Sui", "0xe341a5e1b92cc949ba25be5412ba4f99f8702f30e424d6e6298a33c1d013327a"),
+//   };;
 
   // Used to normalize the amount to account for the tokens decimals
 const decimals = isTokenId(token)
@@ -108,25 +108,25 @@ const decimals = isTokenId(token)
   // recoverTxid = "0xa4e0a2c1c994fe3298b5646dfd5ce92596dc1a589f42e241b7f07501a5a5a39f";
   const sourceChain: Chain = "Sepolia";
   // Finally create and perform the transfer given the parameters set above
-  const xfer = await tokenTransfer(
-    wh,
-    {
-      token,
-      amount: amount.units(amount.parse(amt, decimals)),
-      source,
-      destination,
-      delivery: {
-        automatic,
-        nativeGas: nativeGas ? amount.units(amount.parse(nativeGas, decimals)) : undefined,
-      },
-    },
-    roundTrip,
-  );
+  // const xfer = await tokenTransfer(
+  //   wh,
+    // {
+    //   token,
+    //   amount: amount.units(amount.parse(amt, decimals)),
+    //   source,
+    //   destination,
+    //   delivery: {
+    //     automatic,
+    //     nativeGas: nativeGas ? amount.units(amount.parse(nativeGas, decimals)) : undefined,
+    //   },
+    // },
+    // roundTrip,
+  // );
 
-  const receipt = await waitLog(wh, xfer);
+  // const receipt = await waitLog(wh, xfer);
 
   // Log out the results
-  console.log("receipt was successful ================",receipt);
+  // console.log("receipt was successful ================",receipt);
 };
 
 async function tokenTransfer<N extends Network>(

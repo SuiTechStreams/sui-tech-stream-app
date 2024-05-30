@@ -17,11 +17,11 @@ export default function VideoStream() {
     setIsLoading(true);
     setError('');
     try {
-      await chainTubeService.follow({
-        Arg0: "user1",
-        Arg1: "user2",
-        Arg2: "context",
-      });
+      // await chainTubeService.follow({
+      //   Arg0: "user1",
+      //   Arg1: "user2",
+      //   Arg2: "context",
+      // });
       alert('Followed successfully');
     } catch (err) {
       setError('Failed to follow');
@@ -35,12 +35,12 @@ export default function VideoStream() {
     setIsLoading(true);
     setError('');
     try {
-      await chainTubeService.create_profile({
-        Arg0: "user",
-        Arg1: "profile",
-        Arg2: "info",
-        Arg3: "additionalInfo",
-      });
+      // await chainTubeService.create_profile({
+      //   Arg0: "user",
+      //   Arg1: "profile",
+      //   Arg2: "info",
+      //   Arg3: "additionalInfo",
+      // });
       alert('Subscribed successfully');
     } catch (err) {
       setError('Failed to subscribe');
@@ -54,10 +54,10 @@ export default function VideoStream() {
     setIsLoading(true);
     setError('');
     try {
-      await chainTubeService.tip({
-        Arg0: "user",
-        Arg1: "amount",
-      });
+      // await chainTubeService.tip({
+      //   Arg0: "user",
+      //   Arg1: "amount",
+      // });
       alert('Tip sent successfully');
     } catch (err) {
       setError('Failed to send tip');
