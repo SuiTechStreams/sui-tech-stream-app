@@ -194,16 +194,16 @@ export default function ProfileForm() {
               </div>
             </div>
           )}
-          <div className="flex space-x-16 p-8 m-24 dark:bg-customPurple-foreground justify-center items-center rounded-md">
+          <div className="flex space-x-16 p-8 m-24 bg-customLightPurple dark:bg-customPurple-foreground justify-center items-center rounded-md">
             <div className="space-y-6 flex flex-col">
               <div>
-                <Avatar className="h-24 w-24 object-cover rounded-full">
+                <Avatar className="h-24 w-24 object-cover rounded-full bg-customLightPurple-dark_foreground dark:bg-transparent">
                   <AvatarImage src="/images/user.svg" />
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
               </div>
               <div>
-                <label htmlFor="username" className="block text-xl text-white">
+                <label htmlFor="username" className="block text-xl dark:text-white">
                   Username
                 </label>
                 <Field
@@ -224,7 +224,7 @@ export default function ProfileForm() {
                 </p>
               </div>
               <div>
-                <label htmlFor="bio" className="block text-xl text-white">
+                <label htmlFor="bio" className="block text-xl dark:text-white">
                   Bio
                 </label>
                 <Field
@@ -246,7 +246,7 @@ export default function ProfileForm() {
                 </p>
               </div>
               <div>
-                <label htmlFor="pfp" className="block text-xl text-white">
+                <label htmlFor="pfp" className="block text-xl dark:text-white">
                   Profile URL
                 </label>
                 <UploadToStorage
@@ -267,7 +267,7 @@ export default function ProfileForm() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="dark:bg-black dark:text-white border border-gray-100"
+                  className="bg-customLightPurple-dark_foreground dark:bg-black dark:text-white border border-gray-100"
                 >
                   Create/Edit Profile
                 </Button>
@@ -275,7 +275,7 @@ export default function ProfileForm() {
                   type="button"
                   disabled={isSubmitting}
                   onClick={() => handleSubmit}
-                  className="dark:bg-black dark:text-white border border-gray-100"
+                  className="bg-customLightPurple-dark_foreground dark:bg-black dark:text-white border border-gray-100"
                 >
                   Delete Profile
                 </Button>
@@ -289,14 +289,14 @@ export default function ProfileForm() {
                 <div className="flex space-x-4">
                   <div className="dark:bg-customPurple card-item p-2 border rounded shadow flex items-center space-x-2">
                     <Avatar className="h-12 w-12 object-cover rounded-full">
-                      <AvatarImage src="/images/user1.svg" />
+                      <AvatarImage src="/images/channel_1.jpg" />
                       <AvatarFallback>AB</AvatarFallback>
                     </Avatar>
                     <p>Username 1</p>
                   </div>
                   <div className="dark:bg-customPurple card-item p-2 border rounded shadow flex items-center space-x-2">
                     <Avatar className="h-12 w-12 object-cover rounded-full">
-                      <AvatarImage src="/images/user2.svg" />
+                      <AvatarImage src="/images/channel_3.jpg" />
                       <AvatarFallback>CD</AvatarFallback>
                     </Avatar>
                     <p>Username 2</p>
@@ -309,14 +309,14 @@ export default function ProfileForm() {
                 <div className="flex space-x-4">
                   <div className="dark:bg-customPurple card-item p-2 border rounded shadow flex items-center space-x-2">
                     <Avatar className="h-12 w-12 object-cover rounded-full">
-                      <AvatarImage src="/images/user3.svg" />
+                      <AvatarImage src="/images/channel_8.jpg" />
                       <AvatarFallback>EF</AvatarFallback>
                     </Avatar>
                     <p>Username 3</p>
                   </div>
                   <div className="dark:bg-customPurple card-item p-2 border rounded shadow flex items-center space-x-2">
                     <Avatar className="h-12 w-12 object-cover rounded-full">
-                      <AvatarImage src="/images/user4.svg" />
+                      <AvatarImage src="/images/channel_6.jpg" />
                       <AvatarFallback>GH</AvatarFallback>
                     </Avatar>
                     <p>Username 4</p>

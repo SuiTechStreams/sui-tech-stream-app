@@ -99,7 +99,7 @@ export default function HomePage() {
         </div>
       </section>
       {/* Right content */}
-      <section className="col-span-12 md:col-span-3 border-gray-600 flex flex-col gap-5 bg-customPurple-foreground p-6">
+      <section className="col-span-12 md:col-span-3 border-gray-600 flex flex-col gap-5 bg-customLightPurple dark:bg-customPurple-foreground p-6">
         <RightSideBar className="flex flex-col gap-6" />
       </section>
     </div>
