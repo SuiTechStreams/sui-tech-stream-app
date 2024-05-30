@@ -31,7 +31,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 // 1. Get projectID at https://cloud.walletconnect.com
 
-const projectId = process.env.NEXT_PUBLIC_PROJECT_ID || "";
+const projectId = process.env.NEXT_PUBLIC_PROJECT_ID || "b5824a1167625da7ca5c8cf478428205";
 const clientId = process.env.NEXT_PUBLIC_THIRDWEB_ClIENT_ID || "";
 
 
