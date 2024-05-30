@@ -17,7 +17,7 @@ export class AuthService {
     static getAddressSeed() {
         const jwt = AuthService.decodeJwt();
         const salt = AuthService.salt();
-        return genAddressSeed(BigInt(salt!), "sub", jwt.sub || '', jwt.aud && jwt.aud.toString() || '').toString();
+        return genAddressSeed(BigInt("529314955529314955"), "sub", jwt.sub || '', jwt.aud && jwt.aud.toString() || '').toString();
     }
 
     static getEd25519Keypair(): Ed25519Keypair {
@@ -40,6 +40,25 @@ export class AuthService {
         };
         return await AuthService.verifyPartialZkLoginSignature(verificationPayload);
     }
+
+    static async  getSaltFromMystenAPI(jwtEncoded : string ){
+        const url : string = process.env.NEXT_PUBLIC_SALT_API || "https://salt.api.mystenlabs.com/get_salt";
+        const payload = {token: jwtEncoded};
+
+        const response = await fetch(url!, {
+            method: "POST",
+            mode: "cors",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            referrerPolicy: "no-referrer",
+            body: JSON.stringify(payload),
+        });
+    const responseJson = await response.json();
+    return responseJson.salt;
+    }
+
 
     private static async verifyPartialZkLoginSignature(zkpRequestPayload: any) {
         try {
