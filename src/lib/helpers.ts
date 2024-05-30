@@ -42,34 +42,35 @@ export interface SignerStuff<N extends Network, C extends Chain> {
 export async function getSigner<N extends Network, C extends Chain>(
   chain: ChainContext<N, C>,
 ): Promise<SignerStuff<N, C>> {
-  // Read in from `.env`
-  //(await import("dotenv")).config();
-
-  let signer: Signer;
+  let signer: any;
   const platform = chain.platform.utils()._platform;
+  console.log("process.env.NEXT_PUBLIC_SUI_BRIDGE_ACCOUNT", process.env.NEXT_PUBLIC_SUI_BRIDGE_ACCOUNT);
+  console.log("platform ====", platform)
   switch (platform) {
     case "Solana":
-      signer = await (
-        await solana()
-      ).getSigner(await chain.getRpc(), getEnv("SOL_PRIVATE_KEY"), {
+      if(process.env.SOL_PRIVATE_KEY)
+        signer = await (await solana()).getSigner(await chain.getRpc(), process.env.SOL_PRIVATE_KEY, {
         //computeLimit: 500_000n,
         //priorityFeeAmount: 100_000n,
         debug: true,
       });
       break;
     case "Cosmwasm":
-      signer = await (await cosmwasm()).getSigner(await chain.getRpc(), getEnv("COSMOS_MNEMONIC"));
+      if(process.env.COSMOS_MNEMONIC)
+        signer = await (await cosmwasm()).getSigner(await chain.getRpc(), process.env.COSMOS_MNEMONIC);
       break;
     case "Evm":
-      signer = await (await evm()).getSigner(await chain.getRpc(), getEnv("ETH_PRIVATE_KEY"));
+        if(process.env.ETH_PRIVATE_KEY)
+          signer = await (await evm()).getSigner(await chain.getRpc(), process.env.ETH_PRIVATE_KEY);
       break;
     case "Algorand":
-      signer = await (
-        await algorand()
-      ).getSigner(await chain.getRpc(), getEnv("ALGORAND_MNEMONIC"));
+      if(process.env.ALGORAND_MNEMONIC)
+        signer = await (await algorand()).getSigner(await chain.getRpc(), process.env.ALGORAND_MNEMONIC);
       break;
     case "Sui":
-      signer = await (await sui()).getSigner(await chain.getRpc(), getEnv("SUI_PRIVATE_KEY"));
+      if (process.env.NEXT_PUBLIC_SUI_BRIDGE_ACCOUNT)
+        signer = await (await sui()).getSigner(await chain.getRpc(), process.env.NEXT_PUBLIC_SUI_BRIDGE_ACCOUNT);
+
       break;
     default:
       throw new Error("Unrecognized platform: " + platform);

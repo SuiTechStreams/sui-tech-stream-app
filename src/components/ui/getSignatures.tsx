@@ -3,6 +3,8 @@ import { useAccount, useSignMessage, useChainId } from 'wagmi'
 import { SiweMessage, generateNonce } from "siwe";
 import { Imessage } from '@/types';
 import { ChainTubeService } from "@/hooks/chainTubeCall";
+import { executeWormhole } from '@/hooks/tokenBridge';
+import { AuthService } from '@/hooks/authService';
 
 
 function SignInButton({
@@ -25,6 +27,12 @@ function SignInButton({
       setState((x) => ({ ...x, error: error as Error }));
     }
   }, []);
+
+  let walletAddress: any;
+    if (AuthService.isAuthenticated()) {
+      walletAddress = AuthService.walletAddress();
+    }
+
 
   const chainTubeService = new ChainTubeService();
 
@@ -62,13 +70,20 @@ function SignInButton({
 
       setState((x) => ({ ...x, loading: false }));
 
-      const suiSignature = chainTubeService.getSuiMessageCall();
-
+      //const suiSignature = chainTubeService.getSuiMessageCall();
+      executeWormhole(signature, walletAddress);
+      "0x373c91e6ebd63aba3afe282fa971c198a0e6cd9f152f19bc8c5961c18377b48a";
       //setMessage({ message, signature });
       console.log(
         "Ethereum signature ==================================",
         signature
       );
+
+            console.log(
+              "walletAddress  ==================================",
+              walletAddress
+            );
+
 
     } catch (error) {
       setState((x) => ({ ...x, loading: false, nonce: undefined }));
