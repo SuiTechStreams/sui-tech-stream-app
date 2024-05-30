@@ -20,13 +20,13 @@ export default function VideoStream() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
             <h2 className="text-2xl font-bold mb-4 md:mb-0">Title</h2>
             <div className="flex space-x-4">
-              <Button className="bg-customPurple-foreground border border-gray-400 text-white px-4 py-2 rounded-md hover:bg-popover">
+              <Button className="bg-customLightPurple-dark_foreground dark:bg-customPurple-foreground border border-gray-400 text-white px-4 py-2 rounded-md dark:hover:bg-popover">
                 Follow
               </Button>
-              <Button className="bg-customPurple-foreground border border-gray-400 text-white px-4 py-2 rounded-md hover:bg-popover">
+              <Button className="bg-customLightPurple-dark_foreground dark:bg-customPurple-foreground border border-gray-400 text-white px-4 py-2 rounded-md dark:hover:bg-popover">
                 Subscribe
               </Button>
-              <Button className="bg-customPurple-foreground border border-gray-400 text-white px-4 py-2 rounded-md hover:bg-popover">
+              <Button className="bg-customLightPurple-dark_foreground dark:bg-customPurple-foreground border border-gray-400 text-white px-4 py-2 rounded-md dark:hover:bg-popover">
                 Send Tip
               </Button>
             </div>

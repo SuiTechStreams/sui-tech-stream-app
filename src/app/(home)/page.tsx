@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Tabs, TabsContent, TabsTrigger } from "@/components/ui/tabs";
 import { TabsList } from "@radix-ui/react-tabs";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import AllVideo from "./All";
 import Game from "./Gaming";
@@ -11,7 +11,31 @@ import Technology from "./Technology";
 
 export default function HomePage() {
 
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [activeTab, setActiveTab] = useState("all");
+
+  useEffect(() => {
+    // Function to check if the 'dark' class is present on the html element
+    const checkDarkMode = () => {
+      const htmlElement = document.documentElement;
+      setIsDarkMode(htmlElement.classList.contains('dark'));
+    };
+
+    // Initial check
+    checkDarkMode();
+
+    // Observe changes to the class attribute on the html element
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+
+    // Cleanup the observer on component unmount
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
 
   return (
@@ -20,7 +44,7 @@ export default function HomePage() {
         <div className="flex flex-col gap-6">
           <div className="w-full items-center justify-center m-auto">
             <Image
-              src="/images/banner.png"
+              src={isDarkMode ? '/images/banner.svg' : '/images/banner_light.svg'}
               alt="upload Logo"
               width={500}
               height={250}
