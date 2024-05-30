@@ -43,10 +43,12 @@ export class AuthService {
 
     private static async verifyPartialZkLoginSignature(zkpRequestPayload: any) {
         try {
+            console.log("failed to reqeust the partial sig ====================");
             const proofResponse = await axios.post(PROVER_URL, zkpRequestPayload, {
                 headers: {
-                    'content-type': 'application/json'
-                }
+                    'content-type': 'application/json',
+                    'token': AuthService.jwt()
+                },
             });
             const partialZkLoginSignature = proofResponse.data as PartialZkLoginSignature;
             return partialZkLoginSignature;

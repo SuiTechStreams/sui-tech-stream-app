@@ -1,6 +1,8 @@
 import {
   Chain,
+  ChainContext,
   Network,
+  Signer,
   TokenId,
   TokenTransfer,
   Wormhole,
@@ -10,12 +12,16 @@ import {
 } from "@wormhole-foundation/sdk";
 
 // Import the platform-specific packages
-
 import evm from "@wormhole-foundation/sdk/evm";
 import sui from "@wormhole-foundation/sdk/sui";
 import { SignerStuff, getSigner, waitLog } from "@/lib/helpers";
+import { Ed25519Keypair } from "@mysten/sui.js/keypairs/ed25519";
+import { messageWithIntent } from "@mysten/sui.js/cryptography";
+import { sign } from "crypto";
+import { TransactionBlock } from "@mysten/sui.js/transactions";
+import { SUI_CLIENT } from "./suiClient";
 
-(async function (EthSignature, creatorsAddress) {
+export async function executeWormhole (EthSignature, creatorsAddress?: any) {
   // Init Wormhole object, passing config for which network
   // to use (e.g. Mainnet/Testnet) and what Platforms to support
   const wh = await wormhole("Testnet", [evm, sui]);
@@ -58,11 +64,38 @@ import { SignerStuff, getSigner, waitLog } from "@/lib/helpers";
 
   // Get signer from local key but anything that implements
   // Signer interface (e.g. wrapper around web wallet) should work
-  const source = await getSigner(sendChain);
-  const destination = await getSigner(rcvChain);
+  //const source = await getSigner(sendChain);
+  //const destination = await getSigner(rcvChain);
+  const source:SignerStuff<Network, Chain> = {
+    "Ethereum",
+    signer: EthSignature as Signer<Network, Chain>,
+    address: Wormhole.chainAddress("Sepolia", EthSignature.address()),
+  };
+  
+  const TEST_MNEMONICS = 'change online weapon toe giggle own song inject pretty then seven yard';
+
+  const keypair = Ed25519Keypair.deriveKeypair(TEST_MNEMONICS, "m/44'/784'/0'/0'/0'");
+
+
+  
+  const txb = new TransactionBlock();
+  txb.setSender("0xe341a5e1b92cc949ba25be5412ba4f99f8702f30e424d6e6298a33c1d013327a");
+const { bytes, signature: userSignature } = await txb.sign({
+    client: SUI_CLIENT,
+    signer: keypair,
+});
+
+  console.log("userSignature =================================================", userSignature);
+
+
+const destination: SignerStuff<Network, Chain> = {
+    chain: {"Sapolia", 1115511},
+    signer: userSignature as Signer<Network, Chain>,
+    address: Wormhole.chainAddress("Sui", "0xe341a5e1b92cc949ba25be5412ba4f99f8702f30e424d6e6298a33c1d013327a"),
+  };;
 
   // Used to normalize the amount to account for the tokens decimals
-  const decimals = isTokenId(token)
+const decimals = isTokenId(token)
     ? Number(await wh.getDecimals(token.chain, token.address))
     : sendChain.config.nativeTokenDecimals;
 
@@ -73,35 +106,28 @@ import { SignerStuff, getSigner, waitLog } from "@/lib/helpers";
   // and attempt to fetch details about its progress.
   let recoverTxid = undefined;
   // recoverTxid = "0xa4e0a2c1c994fe3298b5646dfd5ce92596dc1a589f42e241b7f07501a5a5a39f";
-
+  const sourceChain: Chain = "Sepolia";
   // Finally create and perform the transfer given the parameters set above
-  const xfer = !recoverTxid
-    ? // Perform the token transfer
-      await tokenTransfer(
-        wh,
-        {
-          token,
-          amount: amount.units(amount.parse(amt, decimals)),
-          source,
-          destination,
-          delivery: {
-            automatic,
-            nativeGas: nativeGas ? amount.units(amount.parse(nativeGas, decimals)) : undefined,
-          },
-        },
-        roundTrip,
-      )
-    : // Recover the transfer from the originating txid
-      await TokenTransfer.from(wh, {
-        chain: source.chain.chain,
-        txid: recoverTxid,
-      });
+  const xfer = await tokenTransfer(
+    wh,
+    {
+      token,
+      amount: amount.units(amount.parse(amt, decimals)),
+      source,
+      destination,
+      delivery: {
+        automatic,
+        nativeGas: nativeGas ? amount.units(amount.parse(nativeGas, decimals)) : undefined,
+      },
+    },
+    roundTrip,
+  );
 
   const receipt = await waitLog(wh, xfer);
 
   // Log out the results
-  console.log(receipt);
-})();
+  console.log("receipt was successful ================",receipt);
+};
 
 async function tokenTransfer<N extends Network>(
   wh: Wormhole<N>,

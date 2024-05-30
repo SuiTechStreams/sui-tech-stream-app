@@ -4,16 +4,20 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { ChainTubeService } from "@/hooks/chainTubeCall";
+import { ICreateProfile } from "@/types";
+import { UploadToStorage } from "@/components/global/Upload";
 
 const chainTubeService = new ChainTubeService();
 
-export default function ProfileForm({
-  initialValues,
-  profileId,
-  profileCapId,
-}) {
+export default function ProfileForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>("");
+  const [ipfsLink, updateLink] = useState<any>();
+
+  
+  let initialValues: any;
+  let profileId: string;
+  let profileCapId: string;
 
   // Form validation function
   const validate = (values: { username: any }) => {
@@ -24,16 +28,18 @@ export default function ProfileForm({
     return errors;
   };
 
+
+
   // Function to handle creating profile
-  const handleCreateProfile = async (values: { username: any; bio?: any }) => {
+  const handleCreateProfile = async (values: ICreateProfile ) => {
     setIsLoading(true);
     setError("");
     try {
+      console.log(values)
       await chainTubeService.create_profile({
-        Arg0: values.username,
-        Arg1: values.bio,
-        Arg2: "additionalArg2", // Replace with actual value if needed
-        Arg3: "additionalArg3", // Replace with actual value if needed
+        username: values.username,
+        bio: values.bio,
+        pfp: "ipfs://QmVwSfYyZ9tgt47mTGKL1XVVGLtxktryd1d9r3X9Hethb9/techman.jpg", // Replace with actual value if needed
       });
       alert("Profile created successfully");
     } catch (err) {
@@ -120,24 +126,35 @@ export default function ProfileForm({
 
   useEffect(() => {
     let timer: string | number | NodeJS.Timeout | undefined;
+        console.log(ipfsLink);
+
     if (error) {
       timer = setTimeout(() => {
         setError("");
       }, 5000); // Clear error after 5 seconds
     }
     return () => clearTimeout(timer);
-  }, [error]);
+  }, [error, ipfsLink]);
 
   return (
     <Formik
-      initialValues={initialValues}
-      validate={validate}
-      onSubmit={(values, { setSubmitting }) => {
-        handleCreateProfile(values);
-        setSubmitting(false);
+      initialValues={{
+        username: "",
+        bio: "",
+        pfp: "",
       }}
+      onSubmit={(values, { setSubmitting }) => handleCreateProfile(values)}
     >
-      {({ isSubmitting, values }) => (
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        isSubmitting,
+        /* and other goodies */
+      }) => (
         <Form>
           {error && (
             <div className="absolute top-24 right-4 z-50">
@@ -194,7 +211,8 @@ export default function ProfileForm({
                   name="username"
                   placeholder="ABCD"
                   className="block w-full mt-1 p-2 border border-gray-300 rounded-md"
-                  onBlur={() => handleSetUsername(values.username)}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 />
                 <ErrorMessage
                   name="username"
@@ -214,7 +232,8 @@ export default function ProfileForm({
                   name="bio"
                   placeholder="I'm a software engineer"
                   className="block w-full mt-1 p-2 border border-gray-300 rounded-md"
-                  onBlur={() => handleSetBio(values.bio)}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 />
                 <ErrorMessage
                   name="bio"
@@ -230,13 +249,11 @@ export default function ProfileForm({
                 <label htmlFor="pfp" className="block text-xl text-white">
                   Profile URL
                 </label>
-                <Field
-                  type="text"
-                  name="pfp"
-                  placeholder="Profile picture URL"
-                  className="block w-full mt-1 p-2 border border-gray-300 rounded-md"
-                  onBlur={() => handleSetPfp(values.pfp)}
+                <UploadToStorage
+                  accept="image/*"
+                  updateLink={updateLink}
                 />
+                <p>{ipfsLink && ipfsLink}</p>
                 <ErrorMessage
                   name="pfp"
                   component="div"
@@ -256,7 +273,8 @@ export default function ProfileForm({
                 </Button>
                 <Button
                   type="button"
-                  onClick={handleDeleteProfile}
+                  disabled={isSubmitting}
+                  onClick={() => handleSubmit}
                   className="dark:bg-black dark:text-white border border-gray-100"
                 >
                   Delete Profile
