@@ -2,92 +2,15 @@ import { TransactionBlock } from '@mysten/sui.js/transactions';
 import { PACKAGE_ID, SUI_CLIENT } from "./suiClient";
 import { AuthService } from "./authService";
 import { MIST_PER_SUI, SUI_CLOCK_OBJECT_ID } from "@mysten/sui.js/utils";
+import { ICreateProfile, IComment, ICreateVideo, IDeleteComment, IFollow, ILike, ISetBio, ISetPfp, ISetUsername, ITips, IUnfollow, IUnlike, IWithdrawTip, IisFollowing } from '@/types';
 
 // a service to interact with the smart contract using SUI SDK
-interface CreateProfile{
-    username: string;
-    bio: string;
-    pfp: string;
-}
-
-interface ITips{
-    profileId: string;
-    amountInSui: number;
-}
-
-interface IisFollowing{
-    Arg0: string;
-    Arg1: string;
-}
-
-interface IFollow{
-    profileId: string;
-    profileCapId: string;
-    profileIdFollow: string;
-}
-
-interface IUnfollow{
-    profileId: string;
-    profileCapId: string;
-    profileIdUnFollow: string;
-}
-
-interface IWithdrawTip{
-    profileId: string;
-    profileCapId: string;
-    currentAccount: string;
-}
-
-interface ISetUsername{
-    profileId: string;
-    profileCapId: string;
-    username: string;
-}
-
-interface ISetPfp{
-    profileId: string;
-    profileCapId: string;
-    pfp: string;
-}
-
-interface ISetBio{
-    profileId: string;
-    profileCapId: string;
-    bio: string;
-}
-
-
-interface ICreateVideo {
-    profileCapId: string;
-    url: string;
-    length: number;
-}
-
-interface ILike {
-    videoStatsId: string;
-    profileCapId: string;
-}
-interface IUnlike {
-    videoStatsId: string;
-    profileCapId: string;
-}
-interface IComment {
-    videoStatsId: string;
-    profileCapId: string;
-    text: string;
-}
-
-interface IDeleteComment {
-    videoStatsId: string;
-    profileCapId: string;
-    commentId: string;
-}
 
 
 
 export class ChainTubeService {
 
-    async create_profile({username, bio, pfp}: CreateProfile) {
+    async create_profile({username, bio, pfp}: ICreateProfile) {
         const txb = new TransactionBlock();
         const txData = {// notes is name of contract, replace it
             target: `${PACKAGE_ID}::profile::create_profile`,
@@ -304,6 +227,7 @@ export class ChainTubeService {
         const keypair = AuthService.getEd25519Keypair();
         const sender = AuthService.walletAddress()
         txb.setSender(sender);
+        txb.setGasBudget(100000000)
         const [coin] = txb.moveCall(txData);
 
         const { bytes, signature: userSignature } = await txb.sign({
@@ -312,10 +236,13 @@ export class ChainTubeService {
         });
         coin && txb.transferObjects([coin], sender);
         const zkLoginSignature = await AuthService.generateZkLoginSignature(userSignature);
-        return SUI_CLIENT.executeTransactionBlock({
+        const transaction1 = SUI_CLIENT.executeTransactionBlock({
             transactionBlock: bytes,
             signature: zkLoginSignature,
         });
+
+        console.log("Create profile ======", transaction1);
+        return transaction1;
     }
 
     async getSuiMessageCall() {
