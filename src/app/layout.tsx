@@ -86,10 +86,10 @@ export default function RootLayout({
               <NavBar />
               <div className="w-full flex h-full pt-20">
                 {/* Left Sidebar */}
-                <Sidebar className="w-72 bg-customPurple-foreground hidden lg:block border-r border-gray-600 p-2 overflow-y-auto" />
+                <Sidebar className="w-72 bg-customLightPurple dark:bg-customPurple-foreground hidden lg:block border-r border-gray-600 p-2 overflow-y-auto" />
 
                 {/* Main Body */}
-                <main className="bg-customPurple w-full h-full overflow-y-auto">{children}</main>
+                <main className="bg-customLightPurple-foreground dark:bg-customPurple w-full h-full overflow-y-auto">{children}</main>
               </div>
             </ThemeProvider>
           </body>

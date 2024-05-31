@@ -56,6 +56,12 @@ const config = {
           DEFAULT: "rgba(var(--custom-purple))",
           foreground: "rgba(var(--custom-purple-foreground))",
         },
+        customLightPurple: {
+          DEFAULT: "rgba(var(--custom-light))",
+          foreground: "rgba(var(--custom-light-foreground))",
+          dark_foreground:"rgba(var(--custom-light-dark-foreground))",
+          dark_text:"rgba(var(--custom-light-dark-text))"
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

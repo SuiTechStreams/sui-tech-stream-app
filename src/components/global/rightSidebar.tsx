@@ -20,13 +20,37 @@ const uploads = [
   },
   {
     id: 2,
-    video_image: "/images/analyzer.png",
+    video_image: "/images/ana.webp",
     title: "Introduction to Sui-Move analyzer: Development Made Simple",
     uploaded_time: "1 year ago",
   },
   {
     id: 3,
-    video_image: "/images/suiObjects.png",
+    video_image: "/images/analyzer.png",
+    title: "Intro to Sui Objects | Move on Sui Course 2.1",
+    uploaded_time: "1 year ago",
+  },
+  {
+    id: 4,
+    video_image: "/images/videoImage.jpg",
+    title: "Intro to Sui Objects | Move on Sui Course 2.1",
+    uploaded_time: "1 year ago",
+  },
+  {
+    id: 5,
+    video_image: "/images/video_4.jpg",
+    title: "Intro to Sui Objects | Move on Sui Course 2.1",
+    uploaded_time: "1 year ago",
+  },
+  {
+    id: 6,
+    video_image: "/images/ana.webp",
+    title: "Introduction to Sui-Move analyzer: Development Made Simple",
+    uploaded_time: "1 year ago",
+  },
+  {
+    id: 7,
+    video_image: "/images/analyzer.png",
     title: "Intro to Sui Objects | Move on Sui Course 2.1",
     uploaded_time: "1 year ago",
   },
@@ -36,7 +60,7 @@ export default function RightSideBar({ className }: SidebarProps) {
   return (
     <aside className={cn("h-full", className)}>
       <div className="featured-channels flex flex-col gap-5">
-        <h2 className="text-xl text-white">Featured Channels</h2>
+        <h2 className="text-xl font-bold dark:text-white">Featured Channels</h2>
         <div className="channels flex flex-col gap-4 text-black">
           {channels.map((channel) => (
             <div
@@ -52,7 +76,7 @@ export default function RightSideBar({ className }: SidebarProps) {
                     height={150}
                   />
                 </div>
-                <p className="text-white">{channel.name}</p>
+                <p className="dark:text-white">{channel.name}</p>
               </div>
               <button className="w-7 h-7 bg-white rounded flex items-center justify-center font-semibold">
                 +
@@ -65,12 +89,12 @@ export default function RightSideBar({ className }: SidebarProps) {
       <div className="line h-px bg-customPurple"></div>
 
       <div className="popular-uploads flex flex-col gap-5">
-        <h2 className="text-white text-xl">Popular Uploads</h2>
+        <h2 className="dark:text-white font-bold text-xl">Popular Uploads</h2>
         <div className="uploads-cards text-white flex flex-col gap-4">
           {uploads.map((upload) => (
             <div
               key={upload.id}
-              className="card bg-customPurple flex flex-col gap-2 p-2 rounded"
+              className="card bg-customLightPurple-dark_foreground dark:bg-customPurple flex flex-col gap-2 p-2 rounded"
             >
               <div className="img  bg-black overflow-hidden rounded">
                 <Image

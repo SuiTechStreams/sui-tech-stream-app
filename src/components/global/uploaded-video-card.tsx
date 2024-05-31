@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 export default function UploadedVideoCard({ video }: { video: Video }) {
   return (
-    <Card className="bg-customPurple-foreground rounded-lg">
+    <Card className="bg-customLightPurple-dark_foreground dark:bg-customPurple-foreground rounded-lg">
       <CardContent className="p-0">
         <Image
           src={"/images/" + video.video_image}
@@ -23,8 +23,8 @@ export default function UploadedVideoCard({ video }: { video: Video }) {
             <AvatarFallback>{video.channel_name}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col gap-2 justify-between">
-            <h3 className="text-[0.9rem] font-medium">{video.title}</h3>
-            <p className="text-sm">
+            <h3 className="text-[0.9rem] font-medium text-white">{video.title}</h3>
+            <p className="text-sm text-white">
               {`${video.views} views`} • {video.uploaded_time}
             </p>
           </div>

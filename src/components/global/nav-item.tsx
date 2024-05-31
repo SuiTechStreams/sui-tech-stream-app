@@ -24,7 +24,7 @@ export default function NavItem({ href, children, className }: NavItemProps) {
       <nav
         className={cn(
           "w-full p-2 my-1 rounded-md flex items-center justify-center gap-2",
-          isActive && "bg-primary text-black",
+          isActive && "bg-customLightPurple-dark_foreground text-white dark:bg-primary dark:text-black",
           className
         )}
       >

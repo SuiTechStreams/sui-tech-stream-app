@@ -123,15 +123,15 @@ export default async function MyChannelPage() {
   const videos = await getVideos();
   return (
     <div className="h-full w-full grid place-items-center py-8">
-      <div className="w-[90%] rounded-xl border border-gray-300 p-4">
+      <div className="w-[90%] rounded-xl border border-gray-300 p-4 bg-customLightPurple dark:bg-transparent">
         <div className="flex gap-4 items-center">
           <Avatar className="h-24 w-24 object-cover rounded-full">
             <AvatarImage src={"/images/channel.jpg"} />
             <AvatarFallback>img</AvatarFallback>
           </Avatar>
           <div>
-            <h2 className="font-medium text-2xl">Sriharsha</h2>
-            <div className="flex items-center gap-2">
+            <h2 className="font-medium text-2xl text-customLightPurple-dark_text dark:text-white">Sriharsha</h2>
+            <div className="flex items-center gap-2 text-customLightPurple-dark_text dark:text-white">
               <p>10 Followers</p>|<p>50 Subscribers</p>
             </div>
           </div>
@@ -140,7 +140,7 @@ export default async function MyChannelPage() {
         <hr className="border border-gray-400 w-full my-4" />
 
         {/* About */}
-        <div className="bg-customPurple-foreground rounded-xl p-4 space-y-2 my-8">
+        <div className="bg-customLightPurple-foreground dark:bg-customPurple-foreground rounded-xl p-4 space-y-2 my-8">
           <h4 className="text-2xl font-semibold">About</h4>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat

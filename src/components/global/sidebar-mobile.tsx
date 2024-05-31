@@ -15,9 +15,9 @@ export default function SidebarMobile({
   return (
     <Sheet>
       <SheetTrigger asChild className={cn(className)}>
-        <Menu role="button" color="white" className="h-8 w-8" />
+        <Menu role="button" color="white" className="text-customLightPurple-dark_text h-8 w-8 dark:text-white" />
       </SheetTrigger>
-      <SheetContent side={side} className="bg-customPurple-foreground">
+      <SheetContent side={side} className="bg-customLightPurple-foreground dark:bg-customPurple-foreground">
         <Sidebar className="mt-6" />
       </SheetContent>
     </Sheet>

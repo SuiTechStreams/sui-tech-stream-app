@@ -20,6 +20,10 @@ body {
     --card: 0 0% 100%;
     --custom-purple: 63, 40, 71, 100%;
     --custom-purple-foreground: 41, 27, 45, 100%;
+    --custom-light: 246, 222, 255, 100%;
+    --custom-light-foreground: 248, 236, 252, 100%;
+    --custom-light-dark-foreground: 159, 132, 168, 100%;
+    --custom-light-dark-text: 194, 137, 213, 100%;
     --card-foreground: 20 14.3% 4.1%;
     --popover: 0 0% 100%;
     --popover-foreground: 20 14.3% 4.1%;
@@ -70,6 +74,10 @@ body {
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  .placeholder-custom-white::placeholder {
+    color: rgba(255, 255, 255, 0.75); /* Adjust the opacity as needed */
   }
 }
 
